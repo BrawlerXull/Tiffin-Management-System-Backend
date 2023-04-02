@@ -37,4 +37,45 @@ const createDay = async (req, res) => {
   res.status(200).json({ msg: `created day ${req.params.day}` });
 };
 
-module.exports = { getAllDays, getSingleDay, homePage, updateDay, createDay };
+const countDaysChinmay = async(req,res)=>{
+  const data = await Days.find({});
+  let count =0;
+  for(let i=0;i<31;i++){
+    if(data[i].chinmay==true){
+      count++;
+    }
+  }
+  res.status(200).json({ "number of days of chinmay": count });
+}
+const countDaysPrajyot = async(req,res)=>{
+  const data = await Days.find({});
+  let count =0;
+  for(let i=0;i<31;i++){
+    if(data[i].prajyot==true){
+      count++;
+    }
+  }
+  res.status(200).json({ "number of days of prajyot": count });
+}
+const countDaysVarun = async(req,res)=>{
+  const data = await Days.find({});
+  let count =0;
+  for(let i=0;i<31;i++){
+    if(data[i].varun==true){
+      count++;
+    }
+  }
+  res.status(200).json({ "number of days of varun": count });
+}
+const countDaysHemant = async(req,res)=>{
+  const data = await Days.find({});
+  let count =0;
+  for(let i=0;i<31;i++){
+    if(data[i].hemant==true){
+      count++;
+    }
+  }
+  res.status(200).json({ "number of days of hemant": count });
+}
+
+module.exports = { getAllDays, getSingleDay, homePage, updateDay, createDay,countDaysChinmay,countDaysPrajyot,countDaysVarun,countDaysHemant };
